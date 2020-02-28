@@ -16,10 +16,10 @@ You must add the service provider to `config/app.php` for load lang
 ```json
 {
 	"status": "success or error",
-	"status_code": 200, //	or 422, 400, 500, ...
+	"status_code": 200,
 	"message": "your setted message",
 	"data": "your data",
-	"errors": "your errors" // like validation error
+	"errors": "your errors"
 }
 ```
 > **Note:** support of **fa** and **en** languages.
@@ -63,7 +63,7 @@ output:
 {
     "status_code": 200,
     "status": "success",
-    "message": "operation successfully!" // in en language
+    "message": "operation successfully!"
 }
 ```
 > **Note:** default mode is successfully operation.
@@ -118,7 +118,7 @@ output:
 {
     "status_code": 201,
     "status": "success",
-    "data": "the created object", // or null
+    "data": "the created object",
     "message": "operation successfully!"
 }
 ```
