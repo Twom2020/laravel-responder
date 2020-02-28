@@ -1,0 +1,36 @@
+{
+    "name": "twom/laravel-responder",
+    "description": "Responder for api and Laravel project",
+    "type": "library",
+    "require": {
+        "php": "^7.2",
+        "laravel/framework": "^6.2"
+    },
+    "keywords": [
+        "response",
+        "responder",
+        "respond",
+        "responder",
+        "laravel response",
+        "laravel responder"
+    ],
+    "homepage": "https://github.com/Twom2020/laravel-responder",
+    "authors": [
+        {
+            "name": "AliGhaleyan",
+            "email": "alighalehban1379@gmail.com"
+        },
+        {
+            "name": "Alireza Sajedi",
+            "email": "alireza2000sajedi@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Twom\\Responder\\": "src/"
+        },
+        "files": [
+            "src/helper.php"
+        ]
+    }
+}
