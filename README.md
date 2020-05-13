@@ -1,4 +1,4 @@
-﻿## Laravel Responder
+## Laravel Responder
 ### Installation:
 ```
 composer require twom/laravel-responder
