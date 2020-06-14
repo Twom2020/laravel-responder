@@ -25,10 +25,12 @@ trait Responsible
      * @var string
      */
     protected $message = null;
+
     /**
      * @var array|null
      */
     protected $data = null;
+
     /**
      * @var array|string|null
      */
@@ -83,6 +85,7 @@ trait Responsible
         return $this;
     }
 
+
     /**
      * set data for respond ['data' => $data]
      *
@@ -94,6 +97,7 @@ trait Responsible
         $this->data = $data;
         return $this;
     }
+
 
     /**
      * appendData
@@ -107,6 +111,7 @@ trait Responsible
         return $this;
     }
 
+
     /**
      * set data for response ['error' => $error | (string) or (array)]
      *
@@ -119,6 +124,7 @@ trait Responsible
         return $this;
     }
 
+
     /**
      * get data of sending respond
      *
@@ -128,6 +134,7 @@ trait Responsible
     {
         return $this->data;
     }
+
 
     /**
      * get error of sending respond
@@ -213,10 +220,12 @@ trait Responsible
      */
     public function respondBadRequest()
     {
+        if (is_null($this->getMessage()))
+            $this->setMessage(trans("responder::messages.error"));
+
         return $this->respond([
             "status"      => "error",
             "status_code" => Res::HTTP_BAD_REQUEST,
-            "message"     => trans("responder::messages.error"),
         ]);
     }
 
@@ -226,9 +235,9 @@ trait Responsible
      */
     public function respondNotFound()
     {
-        is_null($this->getMessage()) ?
-            $this->setMessage(trans("responder::messages.notfound"))
-            : $this->getMessage();
+        if (is_null($this->getMessage()))
+            $this->setMessage(trans("responder::messages.notfound"));
+
         return $this->respond([
             'status'      => 'error',
             'status_code' => Res::HTTP_NOT_FOUND,
@@ -241,9 +250,9 @@ trait Responsible
      */
     public function respondInternalError()
     {
-        is_null($this->getMessage()) ?
-            $this->setMessage(trans("responder::messages.internal_error"))
-            : $this->getMessage();
+        if (is_null($this->getMessage()))
+            $this->setMessage(trans("responder::messages.internal_error"));
+
         return $this->respond([
             'status'      => 'error',
             'status_code' => Res::HTTP_INTERNAL_SERVER_ERROR,
@@ -258,9 +267,9 @@ trait Responsible
      */
     public function respondValidationError($errors = [])
     {
-        is_null($this->getMessage()) ?
-            $this->setMessage(trans("responder::messages.validation_error"))
-            : $this->getMessage();
+        if (is_null($this->getMessage()))
+            $this->setMessage(trans("responder::messages.validation_error"));
+
         return $this->respond([
             'status'      => 'error',
             'status_code' => Res::HTTP_UNPROCESSABLE_ENTITY,
@@ -276,6 +285,9 @@ trait Responsible
      */
     public function respondUnauthorizedError()
     {
+        if (is_null($this->getMessage()))
+            $this->setMessage(trans("responder::messages.unauthenticated"));
+
         return $this->respond([
             "status"      => "error",
             "status_code" => Res::HTTP_UNAUTHORIZED,
